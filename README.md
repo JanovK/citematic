@@ -40,14 +40,15 @@ cd backend
 npm install
 npm run offline
 
-# Deployment
-npx serverless deploy
+# Deployment Backend (AWS Stages & SSM)
+npx serverless deploy --stage dev
+npx serverless deploy --stage prod
 
 # Debug Logging
 DEBUG=true npx serverless invoke local --function generateCitation --path event.json
 ```
 
-> You'll need a YouTube Data API key stored in AWS SSM Parameter Store at /citematic/youtubeApiKey.
+> You'll need a YouTube Data API key per environement stored in AWS SSM Parameter Store at /citematic/youtubeApiKey-<stage>.
 
 ---
 
