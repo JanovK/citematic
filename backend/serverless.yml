@@ -4,11 +4,11 @@ frameworkVersion: '4'
 
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs20.x
   region: eu-west-1
-  stage: dev
+  stage: ${opt:stage, 'dev'}
   environment:
-    YOUTUBE_API_KEY: ${env:YOUTUBE_API_KEY, ssm:/citematic/youtubeApiKey}
+    YOUTUBE_API_KEY: ${env:YOUTUBE_API_KEY, ssm:/citematic/youtubeApiKey-${self:provider.stage}}
     DEBUG: ${env:DEBUG, 'false'}
 
 functions:
